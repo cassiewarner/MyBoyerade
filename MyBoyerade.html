@@ -1,0 +1,84 @@
+<head>
+  <title>MyBoyerade</title>
+  <link href="http://d2v52k3cl9vedd.cloudfront.net/basscss/6.1.0/basscss.min.css" rel="stylesheet">
+  <link href="styles.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="container">
+
+  <h1>Boyerade 2015</h1>
+
+  <div class="md-col-12">
+    <div class="p2 bg-white border rounded">
+      <h1 class="h2 mt0">Le T-shirt</h1>
+
+      <img src="boyer.jpg" class="mb2" />
+      <p>Chers zot'tout !</p>
+      <p>Pour cette Boyerade Edition 2015, nous vous proposons de faire faire des T-Shirt <b>I can't keep calm, I'm a Boyer</b> - Ce qui veut dire <b>Je ne peux pas rester calme, je suis un Boyer</b> histoire d'annoncer la couleur pour cette nouvelle édition qui sera je n'en doute pas, encore extraordinaire... pleine de fous rires, et d'émotions. </p>
+
+      <p>Ajoutez votre nom, choisissez votre taille. Si vous faites une erreur, cliquez sur <span class="red">Supprimer</span> et recommencez.</p>
+
+      <p>Mi embrass zot'toute bien fort.<br>
+      Boyer lé la ? Nu artrouv alors !</p>
+
+      <p class="mb0">Si y'a des questions, Facebookez Marie-Caroline ou Famicitez ou Smssez.</p>
+    </div>
+  </div>
+
+  {{> orders}}
+
+</div>
+</body>
+
+
+<template name="orders">
+  <h2>Choisir la taille</h2>
+
+  <form>
+    <table class="table-light">
+      <tr>
+        <th>Nom</th>
+        <th>Enfant</th>
+        <th>S</th>
+        <th>M</th>
+        <th>L</th>
+        <th>XL</th>
+        <th>XXL</th>
+        <th></th>
+      </tr>
+
+      {{#each persons}}
+        {{> person}}
+      {{/each}}
+
+      <tr>
+        <td>
+          Total dzafair
+        </td>
+        <td>{{countSize "enfant"}}</td>
+        <td>{{countSize "s"}}</td>
+        <td>{{countSize "m"}}</td>
+        <td>{{countSize "l"}}</td>
+        <td>{{countSize "xl"}}</td>
+        <td>{{countSize "xxl"}}</td>
+        <td></td>
+      </tr>
+    </table>
+
+  <button id="add" class="button-transparent olive">Ajouter une personne</button>
+  </form>
+</template>
+
+<template name="person">
+  <tr>
+    <td><input name="name" type="text" value="{{name}}" class="field-light"></td>
+    <td><input name="size_{{_id}}" value="enfant" type="radio" {{isChecked "enfant"}}></td>
+    <td><input name="size_{{_id}}" value="s" type="radio" {{isChecked "s"}}></td>
+    <td><input name="size_{{_id}}" value="m" type="radio" {{isChecked "m"}}></td>
+    <td><input name="size_{{_id}}" value="l" type="radio" {{isChecked "l"}}></td>
+    <td><input name="size_{{_id}}" value="xl" type="radio" {{isChecked "xl"}}></td>
+    <td><input name="size_{{_id}}" value="xxl" type="radio" {{isChecked "xxl"}}></td>
+    <td><button class="button-transparent red" id="remove">Supprimer</button></td>
+  </tr>
+</template>
